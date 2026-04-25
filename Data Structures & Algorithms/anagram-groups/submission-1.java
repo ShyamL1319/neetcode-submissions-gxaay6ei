@@ -1,14 +1,12 @@
 class Solution {
-    public List<List<String>> groupAnagrams(String[] strs) {
-        HashMap<String, List<String>> map = new HashMap<>();
-
-        for(String str : strs){
-            char[] arrayKey = str.toCharArray();
-            Arrays.sort(arrayKey);
-            String key = new String(arrayKey);
-            map.putIfAbsent(key, new ArrayList());
-            map.get(key).add(str);
+    public int[] twoSum(int[] nums, int target) {
+        HashMap<Integer, Integer> hmap = new HashMap<>();
+        for(int i=0; i<nums.length; i++){
+            if(hmap.containsKey(target - nums[i])){
+                return new int []{hmap.get(target - nums[i]), i};
+            }
+            hmap.put(nums[i], i);
         }
-        return new ArrayList(map.values());
+        return new int[]{-1, -1};
     }
 }
